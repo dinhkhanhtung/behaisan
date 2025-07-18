@@ -114,11 +114,9 @@ Chuyên mua bán, lắp đặt bể hải sản cho nhà hàng. Hàng mới, hà
 <button id="register-consultation-btn" class="bg-primary text-white px-8 py-4 !rounded-button text-lg font-semibold whitespace-nowrap">
 Đăng Ký Tư Vấn Miễn Phí
 </button>
-<a href="https://readdy.ai/home/3bff40ba-2040-4d92-86f5-b3484866690f/50b0c284-e7c1-4289-a9fe-eb4557093968" data-readdy="true">
-<button class="border-2 border-primary text-primary px-8 py-4 !rounded-button text-lg font-semibold whitespace-nowrap">
+<button id="view-products-btn" class="border-2 border-primary text-primary px-8 py-4 !rounded-button text-lg font-semibold whitespace-nowrap">
 Xem Sản Phẩm
 </button>
-</a>
 </div>
 </div>
 </div>
@@ -165,7 +163,7 @@ Với hơn 10 năm kinh nghiệm, chúng tôi cung cấp giải pháp bể hải
 </div>
 </section>
 <!-- Product Categories -->
-<section class="py-20">
+<section id="product-categories" class="py-20">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-16">
 <h2 class="text-4xl font-bold text-gray-900 mb-4">Danh Mục Sản Phẩm</h2>
@@ -577,6 +575,7 @@ const phoneButton = document.querySelector('.fixed .bg-primary');
 const zaloButton = document.querySelector('.fixed .bg-green-500');
 const headerZaloBtn = document.getElementById('headerZaloBtn');
 const registerBtn = document.getElementById('register-consultation-btn');
+const viewProductsBtn = document.getElementById('view-products-btn');
 const nameInput = document.getElementById('name-input');
 const consultationForm = document.getElementById('consultation-form');
 const mainForm = document.getElementById('consultation-form-element');
@@ -616,6 +615,12 @@ nameInput.focus();
 formElement.classList.remove('highlight-animation');
 }, 1000);
 });
+// Xử lý nút Xem Sản Phẩm
+viewProductsBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('#product-categories').scrollIntoView({ behavior: 'smooth' });
+});
+
 phoneButton.addEventListener('click', function() {
 fbq('track', 'Contact', {content_name: 'Phone Call'});
 window.location.href = 'tel:0337396668';
