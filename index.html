@@ -756,8 +756,25 @@ const productDetails = {
 
 document.querySelectorAll('.bg-white.rounded-xl button').forEach((btn, index) => {
     btn.addEventListener('click', function() {
-        let productKey = index === 0 ? 'be-chu-nhat' : 
-                        index === 1 ? 'be-goc-cong' : 'default';
+        let productKey;
+        switch(index) {
+            case 0:
+                productKey = 'be-chu-nhat';
+                break;
+            case 1:
+                productKey = 'be-goc-cong';
+                break;
+            case 2:
+                productKey = 'be-nho-gon';
+                break;
+            case 3:
+                productKey = 'be-cu-tan-trang';
+                break;
+            default:
+                // For the last two products (custom design and accessories), scroll to consultation form
+                document.getElementById('consultation-form').scrollIntoView({ behavior: 'smooth' });
+                return;
+        }
         
         if (productDetails[productKey]) {
             fbq('track', 'ViewContent', {
@@ -771,9 +788,6 @@ document.querySelectorAll('.bg-white.rounded-xl button').forEach((btn, index) =>
                 productDetails[productKey].description,
                 productDetails[productKey].images || []
             );
-        } else {
-            // Chuyển đến form tư vấn cho các sản phẩm khác
-            document.getElementById('consultation-form').scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
